@@ -1,0 +1,129 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SurakshaNet | Demo</title>
+<link rel="stylesheet" href="style.css">
+<main>
+    <header class="top">
+        <div class="brand">
+            <div class="logo">S</div>
+            <div>
+                <p class="ey">GHAZIABAD · PROTOTYPE</p>
+                <h1>SurakshaNet</h1>
+            </div>
+        </div><span class="tag">● DEMO DATA</span>
+    </header>
+    <section id="path" class="page on">
+        <div class="head">
+            <div>
+                <p class="ey">SAFE PATH</p>
+                <h2>Choose a route with confidence.</h2>
+            </div><span class="tag">Evening mode</span>
+        </div>
+        <form id="routeform" class="form"><label class="field"><span>Starting point</span><input
+                    value="AKGEC Main Gate"></label><label class="field"><span>Destination</span><input id="dest"
+                    value="Metro Station"></label><button class="primary">Find safer routes →</button></form>
+        <div class="map"><i class="road r1"></i><i class="road r2"></i><svg viewBox="0 0 400 250">
+                <path id="psafe" class="path safe on" d="M34 202 C96 181 111 126 171 139 S254 72 348 52"></path>
+                <path id="pfast" class="path fast" d="M34 202 C118 187 172 190 215 128 S285 71 348 52"></path>
+                <path id="pbal" class="path bal" d="M34 202 C74 152 117 172 164 119 S258 104 348 52"></path>
+            </svg><i class="pin start">A</i><i class="pin end">B</i><button class="heart ha"
+                data-spot="Sakhi Pharmacy">♥</button><button class="heart hb"
+                data-spot="Metro Help Booth">♥</button><span class="label">Ghaziabad prototype zone</span></div>
+        <div class="row">
+            <div>
+                <h3>Route options</h3>
+                <p id="summary">Based on prototype safety signals.</p>
+            </div><button id="how" class="text">How it works</button>
+        </div>
+        <div id="routes" class="list"></div>
+        <div id="detail" class="detail"></div>
+        <p class="hint">Scores use manually seeded data: lighting, pedestrian activity, and verified open shops. They
+            are not real-time safety guarantees.</p>
+    </section>
+    <section id="spots" class="page">
+        <div class="head">
+            <div>
+                <p class="ey">PINK SAFESPOTS</p>
+                <h2>Nearby places to pause safely.</h2>
+            </div>
+        </div>
+        <div class="hero"><i>♥</i>
+            <div><strong>Pink SafeSpots</strong>
+                <p>Verified, visible places where a person can seek help, recharge, or wait.</p>
+            </div>
+        </div>
+        <div id="spotlist" class="list"></div>
+        <div class="notice">
+            <p><strong>Verification matters</strong><br>Only admin-verified locations appear as SafeSpots.</p>
+        </div>
+    </section>
+    <section id="report" class="page">
+        <div class="head">
+            <div>
+                <p class="ey">COMMUNITY REPORT</p>
+                <h2>Flag a safety concern.</h2>
+                <p class="sub">Reports are reviewed before they influence the public safety layer.</p>
+            </div>
+        </div>
+        <form id="reportform" class="form"><label class="field"><span>Issue type</span><select id="issue">
+                    <option>Dark / poorly lit area</option>
+                    <option>Isolated stretch</option>
+                    <option>Unsafe crossing</option>
+                </select></label><label class="field"><span>Landmark or location</span><input id="location" required
+                    placeholder="e.g. Service road near Gate 2"></label><label class="field"><span>Severity</span>
+                <div class="severity"><button type="button" data-level="Low">Low</button><button type="button"
+                        data-level="Medium" class="on">Medium</button><button type="button"
+                        data-level="High">High</button></div>
+            </label><label class="field"><span>What did you notice?</span><textarea id="note" rows="4" required
+                    placeholder="Do not include personal information."></textarea></label><label class="consent"><input
+                    type="checkbox" required><span>I understand this report needs admin
+                    verification.</span></label><button class="primary">Submit for review →</button></form>
+    </section>
+    <section id="admin" class="page">
+        <div class="head">
+            <div>
+                <p class="ey">DISTRICT ADMIN · DEMO</p>
+                <h2>Safety signals dashboard</h2>
+                <p class="sub">Review community input before publishing it.</p>
+            </div><button id="reset" class="reset">Reset</button>
+        </div>
+        <div id="stats" class="stats"></div>
+        <div class="panel">
+            <div class="row">
+                <div>
+                    <h3>Incoming reports</h3>
+                    <p>New reports require verification.</p>
+                </div>
+            </div>
+            <div id="reportlist" class="list"></div>
+        </div>
+    </section>
+    <nav class="nav"><button class="on" data-page="path"><b>⌁</b>SafePath</button><button
+            data-page="spots"><b>♥</b>SafeSpots</button><button data-page="report"><b>＋</b>Report</button><button
+            data-page="admin"><b>▦</b>Admin</button></nav>
+</main><button id="sos" class="sos" aria-label="Open Emergency SOS"><span>SOS</span><small>EMERGENCY</small></button>
+<div id="toast" class="toast"></div>
+<dialog id="dialog"><button class="close">×</button>
+    <p class="ey">TRANSPARENT SCORING</p>
+    <h2>How SafePath works</h2>
+    <p>Each route has manual prototype scores: 40% lighting, 35% pedestrian activity, and 25% verified open shops /
+        SafeSpots.</p>
+    <p>Real deployment needs verified data sources, privacy safeguards, and service-level rules.</p>
+</dialog>
+<dialog id="sosdialog" class="sos-dialog"><button id="sosclose" class="close" aria-label="Close SOS">×</button>
+    <p class="ey">EMERGENCY ACTION</p>
+    <h2>Activate Emergency SOS</h2>
+    <p class="warning">This demo records an SOS alert in the SurakshaNet Admin dashboard. Your phone will open its
+        Messages and Phone apps for the contact and 112 actions.</p>
+    <form id="sosform"><label class="field"><span>Emergency contact name</span><input id="contactname" required
+                placeholder="e.g. Parent / Guardian"></label><label class="field"><span>Emergency contact
+                phone</span><input id="contactphone" type="tel" required placeholder="e.g. +91 98xxxxxx"></label><label
+            class="consent"><input id="sosconfirm" type="checkbox" required><span>I confirm this is an
+                emergency.</span></label><button class="primary" type="submit">Activate SOS</button></form>
+    <div id="sosactions" class="sos-actions" hidden><a id="smslink" href="#">Message emergency contact</a><a
+            class="call" href="tel:112">Call 112</a><button id="sosdone" type="button">Back to app</button></div>
+</dialog>
+<script src="script.js"></script>
+
+</html>
